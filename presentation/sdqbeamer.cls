@@ -374,8 +374,8 @@
     % Titelbild
     \ifdefined\@titleimage
       \ifx\@titleimage\empty \else%
-        \pgftext[at=\pgfpoint{.5\paperwidth}{0mm},center,bottom]{%
-          \includegraphics[height=40mm]{logos/\@titleimage}
+        \pgftext[at=\pgfpoint{.5\paperwidth}{-20mm},center,bottom]{%
+          \includegraphics[height=80mm]{logos/\@titleimage}
         }
         \fi % Bei Aufruf von \titleimage{} leeren Rahmen anzeigen.
       \else 
