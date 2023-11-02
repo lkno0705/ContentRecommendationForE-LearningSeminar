@@ -69,7 +69,9 @@
 
 ### Prediction Layer: Combining CF & CBF
 - Uses the target item profile $R_{vu}$ and target user profile $R_{uv}$ to predict the rating the target user $u$ would assign to the target item $v$
-- The rating $\hat{r}_{u,v}$ is calculated as: $R(u,v) = R_{uv} \odot R_{vu}$, where $\odot$ denotes the element-wise product of the vectors, $\hat{r}_{u,v} = R(u,v) + b_u + b_v + \alpha$, where $b_u$ is the target user bias, $b_v$ the bias of the target item and $\alpha$ is the global bias
+- It uses Generalized Matrix Factorization (GMF) which is a generalization of Matrix Factorization that uses neural networks with sigmoid activations.
+- To be precise: $R(u,v) = R_{uv} \odot R_{vu}$, where $\odot$ denotes the element-wise product of the vectors, $\hat{r}_{u,v} = \sigma(WR(u,v) + b)$, where $\hat{r}_{u,v}$ denotes the predicted rating
+- This approach allows the model to learn a variant of Matrix Factorization that isn't uniform, in other words, it can assign different weights to different latent dimensions
 
 ### Strengths and Weaknesses of the architecture
 
