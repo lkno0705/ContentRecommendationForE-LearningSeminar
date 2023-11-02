@@ -4,6 +4,7 @@
 - **Presentation Date**: 08.11.23
 - **Presentation Duration**: 15-20min
 - **Discussion Duration**: ~10min
+
 ### Topics to be covered:
 - How does your approach fit into the broader area of content recommendation (for e-learning)?
 - How does your approach work?
@@ -71,7 +72,7 @@
 - Uses the target item profile $R_{vu}$ and target user profile $R_{uv}$ to predict the rating the target user $u$ would assign to the target item $v$
 - It uses Generalized Matrix Factorization (GMF) which is a generalization of Matrix Factorization that uses neural networks with sigmoid activations.
 - To be precise: $R(u,v) = R_{uv} \odot R_{vu}$, where $\odot$ denotes the element-wise product of the vectors, $\hat{r}_{u,v} = \sigma(WR(u,v) + b)$, where $\hat{r}_{u,v}$ denotes the predicted rating
-- This approach allows the model to learn a variant of Matrix Factorization that isn't uniform, in other words, it can assign different weights to different latent dimensions
+- This approach allows the model to learn a variant of Matrix Factorization that isn't uniform, in other words, it can assign different weights to different latent dimensions of the user-item vector $R(u,v)$
 
 ### Strengths and Weaknesses of the architecture
 
@@ -109,13 +110,14 @@
   - The uplift in performance could be just because of the addition of the CF approach
   - The only thing we learned from the performance plots above is that BERT4Rec outperforms its competitors...
 - Generalization performance is unknown as the authors didn't provide any information about how the data was partioned
-  - Did they exclude users from the train set that were only in the test set? How does it handle unseen users and items -> Does it suffer from the Cold start problem?
+  - Did they exclude users from the train set that were only in the test set? How does it handle unseen users and items → Does it suffer from the Cold start problem?
   - How does the model handle domain transfer after training?
   - Does it inherit the fine-tuning capabilities of transformers?
+  - → real world applicability is also unknown
 
 ## Section 4: Applicability to E-Learning
 - The model itself can easily be transferred to E-Learning as long as Timestamps, user and rating information is available for every item in the dataset.
-- E.g. Imagine a linked-in learning setting, where for each training available the user ratings along with timestamps and a user-ID for each rating are available → Then the training and test cases used by the authors can be reconstructed by grouping the samples by user-ID and by training, yielding the required item and user sequences.
+- E.g. Imagine a linked-in learning setting, where for each training available the user ratings along with timestamps and a user-ID for each rating are available → Then the training and test cases used by the authors can be reconstructed by grouping the samples by user-ID and by training, yielding the required item and user sequences. The result would then be a ranking of the best trainings available in linked-ins database, that should be recommended to the user. With such information one could fill the landing page or a "For you page".
 - Real world applicability is unknown, as mentioned before
 
 <!-- ## Section 5: Summary -->
