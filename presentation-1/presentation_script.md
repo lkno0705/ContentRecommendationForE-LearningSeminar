@@ -86,15 +86,38 @@
 - Weaknesses
   - Sequence length is limited because of memory constraints from the transformer models
   - Needs lots of Memory and Processing power in the worst case → We need to run a transformer model for each user and a separate model for each target item
+  - It only works with rating information doesn't support implicit feedback such as clicking on items, etc.
 
 ## Section 3: Performance & Experiments
 
-### Experiment Setting
-
 ### Results
+- show two plots with data
+- Show that HybridBERT4Rec outperforms all models across the board, with the exception in the hit rate for low values of k
+- Model has been evaluated on three datasets:
+  - MovieLens
+  - Yelp
+  - Goodreads
+- As Metrics the hit ratio (HR) of the top k predictions and normalized discounted cumulative gain (NDCG) were reported (for both higher is better)
+- It was evaluated against 4 models:
+  - Caser: unidirectional CBF approach using CNNs that predicts the top N-ranked items that a user will likely interact with
+  - GRU4Rec: unidirectional CBF approach using RNNs that predicts next item embeddings
+  - SAS4Rec: unidirectional CBF approach that uses a transformer-based architecture to predict the next item a user will interact with
+  - BERT4Rec: as covered earlier, bidirectional CBF approach based on BERT
+
+### The problems with the experiments
+- NO HYBRID MODEL HAS BEEN EVALUATED!!!
+  - The uplift in performance could be just because of the addition of the CF approach
+  - The only thing we learned from the performance plots above is that BERT4Rec outperforms its competitors...
+- Generalization performance is unknown as the authors didn't provide any information about how the data was partioned
+  - Did they exclude users from the train set that were only in the test set? How does it handle unseen users and items -> Does it suffer from the Cold start problem?
+  - How does the model handle domain transfer after training?
+  - Does it inherit the fine-tuning capabilities of transformers?
 
 ## Section 4: Applicability to E-Learning
+- The model itself can easily be transferred to E-Learning as long as Timestamps, user and rating information is available for every item in the dataset.
+- E.g. Imagine a linked-in learning setting, where for each training available the user ratings along with timestamps and a user-ID for each rating are available → Then the training and test cases used by the authors can be reconstructed by grouping the samples by user-ID and by training, yielding the required item and user sequences.
+- Real world applicability is unknown, as mentioned before
 
-## Section 5: Summary
+<!-- ## Section 5: Summary -->
 
 ## Discussion Topics / Additional slides:
