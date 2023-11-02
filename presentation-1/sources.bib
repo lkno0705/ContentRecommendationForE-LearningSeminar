@@ -1,0 +1,76 @@
+@article{channarongHybridBERT4RecHybridContentBased2022,
+  title = {{{HybridBERT4Rec}}: {{A Hybrid}} ({{Content-Based Filtering}} and {{Collaborative Filtering}}) {{Recommender System Based}} on {{BERT}}},
+  shorttitle = {{{HybridBERT4Rec}}},
+  author = {Channarong, Chanapa and Paosirikul, Chawisa and Maneeroj, Saranya and Takasu, Atsuhiro},
+  year = {2022},
+  journal = {IEEE Access},
+  volume = {10},
+  pages = {56193--56206},
+  issn = {2169-3536},
+  doi = {10.1109/ACCESS.2022.3177610},
+  urldate = {2023-11-02},
+  abstract = {Because a user's behavior depends mainly on the user's current interests, which can change over time, the sequential recommendation approach has become more prevalent in recommender systems. Many methods have been proposed that aim to model sequential recommendations. One of these is BERT4Rec, which applies the bidirectional-encoder-representations-from-transformers (BERT) technique to model user behavior sequences by considering the target user's historical data, i.e., a content-based filtering (CBF) approach. Despite BERT4Rec's effectiveness, we argue that considering only this historical data is insufficient to provide the most accurate recommendation. We believe that if BERT were to consider other users' interactions in its analysis, it would increase the model accuracy. Therefore, we propose a new method called HybridBERT4Rec, which applies BERT to both CBF and collaborative filtering (CF). For CBF, we want to extract the characteristics of the target user's interactions with purchased items. (We implement this in the same way as in BERT4Rec, with our model generating a target user profile.) For CF, we want to find neighboring users who are similar to the target user. Here, we extract the target item's characteristics using all other users who rated the target item as a second input to BERT. This generates a target item profile. After obtaining both profiles, we use them to predict a rating score. We experimented with three datasets, finding that our model was more accurate than the original BERT4Rec.},
+  file = {/Users/I516998/Zotero/storage/5GK2YPY2/Channarong et al. - 2022 - HybridBERT4Rec A Hybrid (Content-Based Filtering .pdf}
+}
+
+@misc{heNeuralCollaborativeFiltering2017,
+  title = {Neural {{Collaborative Filtering}}},
+  author = {He, Xiangnan and Liao, Lizi and Zhang, Hanwang and Nie, Liqiang and Hu, Xia and Chua, Tat-Seng},
+  year = {2017},
+  month = aug,
+  number = {arXiv:1708.05031},
+  eprint = {1708.05031},
+  primaryclass = {cs},
+  publisher = {{arXiv}},
+  urldate = {2023-11-02},
+  abstract = {In recent years, deep neural networks have yielded immense success on speech recognition, computer vision and natural language processing. However, the exploration of deep neural networks on recommender systems has received relatively less scrutiny. In this work, we strive to develop techniques based on neural networks to tackle the key problem in recommendation -- collaborative filtering -- on the basis of implicit feedback. Although some recent work has employed deep learning for recommendation, they primarily used it to model auxiliary information, such as textual descriptions of items and acoustic features of musics. When it comes to model the key factor in collaborative filtering -- the interaction between user and item features, they still resorted to matrix factorization and applied an inner product on the latent features of users and items. By replacing the inner product with a neural architecture that can learn an arbitrary function from data, we present a general framework named NCF, short for Neural network-based Collaborative Filtering. NCF is generic and can express and generalize matrix factorization under its framework. To supercharge NCF modelling with non-linearities, we propose to leverage a multi-layer perceptron to learn the user-item interaction function. Extensive experiments on two real-world datasets show significant improvements of our proposed NCF framework over the state-of-the-art methods. Empirical evidence shows that using deeper layers of neural networks offers better recommendation performance.},
+  archiveprefix = {arxiv},
+  keywords = {Computer Science - Information Retrieval},
+  file = {/Users/I516998/Zotero/storage/M5CVYY3A/He et al. - 2017 - Neural Collaborative Filtering.pdf;/Users/I516998/Zotero/storage/RB6NQHIA/1708.html}
+}
+
+@misc{sunBERT4RecSequentialRecommendation2019,
+  title = {{{BERT4Rec}}: {{Sequential Recommendation}} with {{Bidirectional Encoder Representations}} from {{Transformer}}},
+  shorttitle = {{{BERT4Rec}}},
+  author = {Sun, Fei and Liu, Jun and Wu, Jian and Pei, Changhua and Lin, Xiao and Ou, Wenwu and Jiang, Peng},
+  year = {2019},
+  month = aug,
+  number = {arXiv:1904.06690},
+  eprint = {1904.06690},
+  primaryclass = {cs},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.1904.06690},
+  urldate = {2023-11-02},
+  abstract = {Modeling users' dynamic and evolving preferences from their historical behaviors is challenging and crucial for recommendation systems. Previous methods employ sequential neural networks (e.g., Recurrent Neural Network) to encode users' historical interactions from left to right into hidden representations for making recommendations. Although these methods achieve satisfactory results, they often assume a rigidly ordered sequence which is not always practical. We argue that such left-to-right unidirectional architectures restrict the power of the historical sequence representations. For this purpose, we introduce a Bidirectional Encoder Representations from Transformers for sequential Recommendation (BERT4Rec). However, jointly conditioning on both left and right context in deep bidirectional model would make the training become trivial since each item can indirectly "see the target item". To address this problem, we train the bidirectional model using the Cloze task, predicting the masked items in the sequence by jointly conditioning on their left and right context. Comparing with predicting the next item at each position in a sequence, the Cloze task can produce more samples to train a more powerful bidirectional model. Extensive experiments on four benchmark datasets show that our model outperforms various state-of-the-art sequential models consistently.},
+  archiveprefix = {arxiv},
+  keywords = {Computer Science - Information Retrieval,Computer Science - Machine Learning},
+  file = {/Users/I516998/Zotero/storage/LUYIPKBX/Sun et al. - 2019 - BERT4Rec Sequential Recommendation with Bidirecti.pdf;/Users/I516998/Zotero/storage/FCC748IB/1904.html}
+}
+
+@article{wangSequentialRecommenderSystems2019,
+  title = {Sequential {{Recommender Systems}}: {{Challenges}}, {{Progress}} and {{Prospects}}},
+  shorttitle = {Sequential {{Recommender Systems}}},
+  author = {Wang, Shoujin and Hu, Liang and Wang, Yan and Cao, Longbing and Sheng, Quan Z. and Orgun, Mehmet},
+  year = {2019},
+  pages = {6332--6338},
+  urldate = {2023-11-02},
+  abstract = {Electronic proceedings of IJCAI 2019},
+  file = {/Users/I516998/Zotero/storage/L4I2KE8J/883.html}
+}
+
+@inproceedings{yuDynamicRecurrentModel2016,
+  title = {A {{Dynamic Recurrent Model}} for {{Next Basket Recommendation}}},
+  booktitle = {Proceedings of the 39th {{International ACM SIGIR}} Conference on {{Research}} and {{Development}} in {{Information Retrieval}}},
+  author = {Yu, Feng and Liu, Qiang and Wu, Shu and Wang, Liang and Tan, Tieniu},
+  year = {2016},
+  month = jul,
+  series = {{{SIGIR}} '16},
+  pages = {729--732},
+  publisher = {{Association for Computing Machinery}},
+  address = {{New York, NY, USA}},
+  doi = {10.1145/2911451.2914683},
+  urldate = {2023-11-02},
+  abstract = {Next basket recommendation becomes an increasing concern. Most conventional models explore either sequential transaction features or general interests of users. Further, some works treat users' general interests and sequential behaviors as two totally divided matters, and then combine them in some way for next basket recommendation. Moreover, the state-of-the-art models are based on the assumption of Markov Chains (MC), which only capture local sequential features between two adjacent baskets. In this work, we propose a novel model, Dynamic REcurrent bAsket Model (DREAM), based on Recurrent Neural Network (RNN). DREAM not only learns a dynamic representation of a user but also captures global sequential features among baskets. The dynamic representation of a specific user can reveal user's dynamic interests at different time, and the global sequential features reflect interactions of all baskets of the user over time. Experiment results on two public datasets indicate that DREAM is more effective than the state-of-the-art models for next basket recommendation.},
+  isbn = {978-1-4503-4069-4},
+  keywords = {next basket recommendation,recurrent neural network}
+}
