@@ -30,12 +30,52 @@
 - Some variant of an RNN such as LSTMs or GRUs
 - General idea: encode a user's historical records into a vector representation
 - E.G. DREAM: Uses a representation of items (item IDs, latent features etc...) from a users' history to learn a representation of a user's interests at different times, which is then used to calculate a rating score for all items at each time step
-- However, these Systems suffer from common RNN problems -> exploding and vanishing gradients, catastrophic forgetting, deep in time
+- However, these Systems suffer from common RNN problems -> exploding and vanishing gradients, catastrophic forgetting, deep in time, uni-directional
 - Consider Transformers!
 
 ## Section 2: HybridBERT4Rec
 
-## Section 3: Performance
+### High Level Overview
+- HybridBERT4Rec is a hybrid recommendation model, that uses Collaborative Filtering and Content-Based Filtering in order to predict a rating for a target item
+- HybridBERT4Rec is composed of three main parts:
+  - CBF-HybridBERT4Rec: Covers Content-Based Filtering
+  - CF-HybridBERT4Rec: Covers Collaborative Filtering
+  - Prediction Layer: Combines both outputs to predict a rating
+- Before we can take a closer look at these we first have to understand its predecessor BERT4Rec which this model is based upon.
+
+### BERT4Rec
+- Task: Aims to predict the next item a user is likely to interact with
+- Takes a sequence of items (tokens) from the users' history in **<u>chronological order</u>** as input.
+- Randomly masks an item in the sequence during training, during inference the mask is appended to the input sequence
+- Pass the masked sequence to a standard BERT transformer
+- The resulting hidden representation of the masked token is then passed through a projection layer, which predicts the recommendation
+-  -> Essentially train with a Masked Language Modelling objective but with recommendation items -> we predict the target item from an item context, which is given by a users' history -> This plays directly into the strengths of the transformer architecture as they excel at building information rich contexts
+- This allows the transformer to learn the relation between user' histories and thus current and past interests, and the target items
+- A limitation of this approach, is that the set of recommended items for a given user will always be in one of the same categories the user has seen before -> Because the prediction solely relies on the users history
+
+### CF-HybridBERT4Rec: Collaborative Filtering
+- Aim is to extract the target item representation based on the target user and its neighbours -> target user profile
+- Input: The user sequence of the target item -> includes all users who have rated the target item including the target user -> all users who have rated the item are assumed to be neighbours
+- The target user is masked in the input, during inference, a mask token is appended to the user sequence
+- Use BERT4Rec as explained earlier
+- After training we receive a model, which can predict an item representation that is composed of characteristics from all users that have rated the item -> We essentially receive a representation about the target user profile for the target item -> item representation based on user characteristics
+- The projection layer then generates a distribution of all users over the target user -> we receive user-similarity probabilities between the neighboring users and the target user which is called the **target item $v$ profile $R_{vu}$**
+
+### CBF-HybridBERT4Rec: Content Based Filtering
+- Aim is to extract the target user representation that describes the target users preferences / interests
+- Input: Sequence of items from the target users history, the target item is masked in the sequence, during inference a mask token is appended to the sequence
+- Employs the same architecture / concepts as used in CF-HybridBERT4Rec but with different data
+- Output in this case is the distribution of all items over the target item, expressed as the interaction probability of all items with the target user, which is called the **target user $u$ profile $R_{uv}$**.
+
+### Prediction Layer: Combining CF & CBF
+
+### Strengths and Weaknesses
+
+## Section 3: Performance & Experiments
+
+### Experiment Setting
+
+### Results
 
 ## Section 4: Applicability to E-Learning
 
