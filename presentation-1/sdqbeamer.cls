@@ -114,6 +114,8 @@
 \setbeamerfont{frametitle}{series=\bfseries,size=\Large}
 \setbeamerfont{framesubtitle}{series=\bfseries,size=\normalsize}
 
+\setbeamertemplate{caption}[numbered]
+
 %% -----------------
 %% | Folien-Layout |
 %% -----------------
