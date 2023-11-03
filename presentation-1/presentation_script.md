@@ -85,7 +85,7 @@
   - Intermediate results can be cached → e.g. we only need to recalculate the target item profile if a new rating has been added to the target item, otherwise the old one can be reused.
 
 - Weaknesses
-  - Sequence length is limited because of memory constraints from the transformer models
+  - Sequence length is limited because of memory constraints from the transformer models -> history is therefore also limited
   - Needs lots of Memory and Processing power in the worst case → We need to run a transformer model for each user and a separate model for each target item
   - It only works with rating information doesn't support implicit feedback such as clicking on items, etc.
 

@@ -69,41 +69,97 @@
 \begin{frame}{A Common Approach to Sequential modelling}
 	\begin{figure}
 		\includegraphics[height=0.45\textheight]{images/rnn_seq.pdf}
-		\caption{Sequential Content Recommendation with RNNs}
+		\caption{Sequential Content Recommendation with RNNs. \cite{yuDynamicRecurrentModel2016}}
 	\end{figure}
 	\begin{itemize}
-		\item Suffers from common RNN problems! Especially: \textbf{Catastrophic forgetting}, uni-directionality
+		\item Suffers from common RNN problems! Especially: \textbf{Catastrophic forgetting}, uni-directionality \cite{channarongHybridBERT4RecHybridContentBased2022}
 	\end{itemize}
 \end{frame}
 
 \section{HybridBERT4Rec}
-\begin{frame}
-	filler
-\end{frame}
 
 \subsection{Architecture}
-\begin{frame}
-	filler
+\begin{frame}{High Level Overview}
+	\begin{figure}
+		\includegraphics[height=0.6\textheight]{images/hybridBERT4Rec_high_level.pdf}
+		\caption{High level overview of HybridBERT4Recs Architecture. \cite{channarongHybridBERT4RecHybridContentBased2022}}
+	\end{figure}
+\end{frame}
+\begin{frame}{BERT4Rec \cite{sunBERT4RecSequentialRecommendation2019}}
+	
+\end{frame}
+\begin{frame}{CF-HybridBERT4Rec}
+	
+\end{frame}
+\begin{frame}{CBF-HybridBERT4Rec}
+	
+\end{frame}
+\begin{frame}{Prediction Layer: Combining CF \& CBF}
+	
 \end{frame}
 
 \subsection{Strengths \& Weaknesses}
-\begin{frame}
-	filler
+\begin{frame}{Strengths \& Weaknesses}
+	\begin{columns}
+		\column[t]{.5\textwidth}
+		\large{\textbf{Strengths:}}
+		\begin{itemize}
+			\item Easy to parallelize
+			\item Bi-directional
+			\item Sequential
+			\item CBF-, CF-model \& Prediction layer can be executed independently
+			\item Intermediate results can be cached
+		\end{itemize}
+		\column[t]{.5\textwidth}
+		\large{\textbf{Weaknesses:}}
+		\begin{itemize}
+			\item Sequence length is limited
+			\item Needs lots of processing power and memory
+			\item Only uses rating information
+		\end{itemize}
+	\end{columns}
 \end{frame}
 
 \section{Model Performance \& Experiments}
-\begin{frame}
-	filler
+\begin{frame}{Results}
+	\begin{columns}
+		\column{.6\textwidth}
+		\begin{figure}
+			\includegraphics[height=0.55\textheight, width=0.8\textwidth]{images/results.pdf}
+			\caption{Performance comparison of different recommender models on three datasets as published by the authors of HybridBERT4Rec. \cite{channarongHybridBERT4RecHybridContentBased2022}}
+		\end{figure}
+		\column{.4\textwidth}
+		\textbf{Critique:}
+		\begin{itemize} \pause
+			\item No Hybrid model was evaluated!
+			\item No information about data partitioning
+			\item Generalization performance \& real world Applicability is unknown
+		\end{itemize}
+	\end{columns}
 \end{frame}
 
 \section{Applicability to E-Learning}
-\begin{frame}
-	filler
+\begin{frame}{Applicability to E-Learning}
+	\begin{columns}
+		\column{0.5\textwidth}
+		\begin{figure}
+			\includegraphics[height=0.55\textheight]{images/linked_in_landing.pdf}
+			\caption{Linked-In Learning landing-page. \cite{LinkedInLearningMit}}
+		\end{figure}
+		\column{0.5\textwidth}
+		\begin{figure}
+			\includegraphics[height=0.6\textheight]{images/linked_in_course.pdf}
+			\caption{Linked-In Learning course overview. \cite{LinkedInLearningMit}}
+		\end{figure}
+	\end{columns}
 \end{frame}
 
+\appendix
+\beginbackup
 \begin{frame}{References}
 	\printbibliography
 \end{frame}
+\backupend
 
 
 % \subsection{Erster Unterabschnitt}

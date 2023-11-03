@@ -12,3 +12,5 @@
 *.toc
 *.DS_Store
 *.blg
+*.drawio.bkp
+*.drawio.dtmp
