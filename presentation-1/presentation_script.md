@@ -123,3 +123,21 @@
 <!-- ## Section 5: Summary -->
 
 ## Discussion Topics / Additional slides:
+
+### Matrix Factorization
+
+### BERT
+- Bidirectional Encoder Representations from Transformers
+- Classification token
+- 12 Transformer Encoder layers
+- Trained with Masked Language Modelling
+
+### Normalized Discounted Cumulative Gain
+- Measures the rating lists quality by accessing the items rank and rating
+$$DCG_k = \sum_{i=1}^{k}\frac{2^{rel_i} - 1}{\log_2(i+1)}$$
+- where k is the particular rank position, $rel_i$ is the graded relevance at position i
+- The premise of DCG is that highly relevant documents appearing lower in a search result list should be penalized as the graded relevance value is reduced logarithmically proportional to the position of the result.
+$$IDCG_k = \sum_{i=1}^{|REL_k|}\frac{rel_i}{\log_2(i+1)}$$
+- Ideal Discounted Cumulative Gain
+- $|REL_k|$ represents the list of relevant documents (ordered by their relevance) in the corpus up to position k
+$$NDCG_k = \frac{DCG_k}{IDCG_k}$$

@@ -6,6 +6,13 @@
 %% Beispiel-Präsentation
 \documentclass[en]{sdqbeamer}
  
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
 %% Titelbild
 \titleimage{unima_schloss}
 
@@ -170,6 +177,29 @@
 \beginbackup
 \begin{frame}{References}
 	\printbibliography
+\end{frame}
+
+\begin{frame}{Matrix Factorization}
+	
+\end{frame}
+
+\begin{frame}{BERT}
+	\begin{figure}
+		\includegraphics[height=0.5\textheight]{images/The-Transformer-based-BERT-base-architecture-with-twelve-encoder-blocks.pdf}
+		\caption{Schematic of BERTs Architecture \footnote{source: \href{https://www.researchgate.net/figure/The-Transformer-based-BERT-base-architecture-with-twelve-encoder-blocks\_fig2\_349546860}{https://www.researchgate.net/figure/The-Transformer-based-BERT-base-architecture-with-twelve-encoder-blocks\_fig2\_349546860}}}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}{Normalized Discounted Cumulative Gain (NDCG)}
+	\begin{itemize}
+		\item Measures the rating lists quality by accessing the items rank and rating
+	\end{itemize}
+	$$DCG_k = \sum_{i=1}^{k}\frac{2^{rel_i} - 1}{\log_2(i+1)}$$
+	$$IDCG_k = \sum_{i=1}^{|REL_k|}\frac{rel_i}{\log_2(i+1)}$$
+	$$NDCG_k = \frac{DCG_k}{IDCG_k}$$
+	\blfootnote{source: \href{https://en.wikipedia.org/wiki/Discounted\_cumulative\_gain}{https://en.wikipedia.org/wiki/Discounted\_cumulative\_gain}; \cite{channarongHybridBERT4RecHybridContentBased2022}}
+	
 \end{frame}
 \backupend
 
