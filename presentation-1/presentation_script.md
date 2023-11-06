@@ -49,7 +49,7 @@
 - Takes a sequence of items (tokens) from the users' history in **<u>chronological order</u>** as input.
 - Randomly masks an item in the sequence during training, during inference the mask is appended to the input sequence
 - Pass the masked sequence to a standard BERT transformer
-- The resulting hidden representation of the masked token is then passed through a projection layer, which predicts the recommendation
+- The resulting hidden representation of the masked item is then passed through a projection layer, which predicts the recommendation
 -  → Essentially train with a Masked Language Modelling objective but with recommendation items → we predict the target item from an item context, which is given by a users' history → This plays directly into the strengths of the transformer architecture as they excel at building information rich contexts
 - This allows the transformer to learn the relation between user' histories and thus current and past interests, and the target items
 - A limitation of this approach, is that the set of recommended items for a given user will always be in one of the same categories the user has seen before → Because the prediction solely relies on the users history

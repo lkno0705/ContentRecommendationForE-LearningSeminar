@@ -86,13 +86,22 @@
 	\end{figure}
 \end{frame}
 \begin{frame}{BERT4Rec \cite{sunBERT4RecSequentialRecommendation2019}}
-	
+	\begin{figure}
+		\includegraphics[width=0.9\textwidth]{images/BERT4Rec.pdf}
+		\caption{BERT4Rec Architecture, taking item embeddings $v_t^u$ from user $u$ history as input and predicts the next item $v_m^u$, $u$ is likely to interact with. \cite{sunBERT4RecSequentialRecommendation2019}}
+	\end{figure}
 \end{frame}
 \begin{frame}{CF-HybridBERT4Rec}
-	
+	\begin{figure}
+		\includegraphics[width=0.9\textwidth]{images/CF-HybridBERT4Rec.pdf}
+		\caption{CF-HybridBERT4Rec Architecture, taking user embeddings from all users that have rated the target item $v$ as input and predicts the \enquote{target item profile $\overrightarrow{R_{v,u}}$}. \cite{channarongHybridBERT4RecHybridContentBased2022}}
+	\end{figure}
 \end{frame}
 \begin{frame}{CBF-HybridBERT4Rec}
-	
+	\begin{figure}
+		\includegraphics[width=0.9\textwidth]{images/CBF-HybridBERT4Rec.pdf}
+		\caption{CBF-HybridBERT4Rec Architecture, taking item embeddings from a user $u$ history as input and predicts a \enquote{target user profile $\overrightarrow{R_{u,v}}$}. \cite{channarongHybridBERT4RecHybridContentBased2022}}
+	\end{figure}
 \end{frame}
 \begin{frame}{Prediction Layer: Combining CF \& CBF}
 	
