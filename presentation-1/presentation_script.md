@@ -71,7 +71,8 @@
 ### Prediction Layer: Combining CF & CBF
 - Uses the target item profile $R_{vu}$ and target user profile $R_{uv}$ to predict the rating the target user $u$ would assign to the target item $v$
 - It uses Generalized Matrix Factorization (GMF) which is a generalization of Matrix Factorization that uses neural networks with sigmoid activations.
-- To be precise: $R(u,v) = R_{uv} \odot R_{vu}$, where $\odot$ denotes the element-wise product of the vectors, $\hat{r}_{u,v} = \sigma(WR(u,v) + b)$, where $\hat{r}_{u,v}$ denotes the predicted rating
+- To be precise: $R(u,v) = R_{uv} \odot R_{vu}$, where $\odot$ denotes the **element-wise** product of the vectors, $\hat{r}_{u,v} = \sigma(WR(u,v) + b)$, where $\hat{r}_{u,v}$ denotes the predicted rating
+- The model learns the interaction function (How user and item latent representations are combined)
 - This approach allows the model to learn a variant of Matrix Factorization that isn't uniform, in other words, it can assign different weights to different latent dimensions of the user-item vector $R(u,v)$
 
 ### Strengths and Weaknesses of the architecture
@@ -124,7 +125,16 @@
 
 ## Discussion Topics / Additional slides:
 
+### Embeddings & Tokenization
+- Embeddings:
+  - Embeddings are learned during the training process
+- Tokenization:
+  - In the original paper they mention tokens very briefly when talking about the input of the model, however, the word token is used as a synonym to the user / item at position t in the input sequence
+  - They however do not explain the tokenization process, but they also do not mention any form of tokenizer etc.
+
 ### Matrix Factorization
+- Most popular approach to Collaborative Filtering
+- Models a users interaction on an item as the **inner product** between the latent vectors of the user and the item → User and item are combined linearly / uniformly, which may not be sufficient to model the complex structure of user interaction data
 
 ### BERT
 - Bidirectional Encoder Representations from Transformers

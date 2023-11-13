@@ -180,7 +180,14 @@
 \end{frame}
 
 \begin{frame}{Matrix Factorization}
-	
+	\textbf{Inputs:}
+	\begin{itemize}
+		\item User latent representation $p_u$
+		\item Item latent representation $q_i$
+		\item Dimension of latent space $K$
+	\end{itemize}
+	$$\hat{y_{u,i}} = p_u^T q_i = \sum_{k=1}^{K}p_{uk}q_{ik}$$
+	\blfootnote{source: \cite{heNeuralCollaborativeFiltering2017}}
 \end{frame}
 
 \begin{frame}{BERT}
