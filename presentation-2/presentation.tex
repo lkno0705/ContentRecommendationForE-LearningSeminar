@@ -95,13 +95,28 @@
 \begin{frame}{The Setting}
 	\begin{figure}
 		\includegraphics[height=0.6\textheight]{images/setting.pdf}
-		\caption{The Setting, consisting of a user collection $U$, a collection of learning ojectives $T$ and a collection of exercises $X$, which can be used to predict a ranking $R(u)$ for a given user $u$.}
+		\caption{The Setting, consisting of a user collection $U$ and their histories $h(u)$, a collection of learning objectives $T$ and a collection of exercises $X$, which can be used to predict a ranking $R(u)$ for a given user $u$.}
 	\end{figure}
 \end{frame}
 
 \section{Model Adaption}
 \begin{frame}
 	\centering\textbf{\LARGE{Model Adaption}}
+\end{frame}
+
+\begin{frame}{CF-HybridBERT4Rec}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\begin{itemize}
+				\item $u \in N \iff \forall u, u_{m} \in U, t \in T: d_{u, t} = d_{u_{m}, t}$, with $N$ being the set of neighbors for target (masked) user $u_{m}$ and learning objective $t$
+				\item $\overrightarrow{R_{t,u}}$: a user-similarity probability distribution of all users over the target (masked) user
+			\end{itemize}
+		\column{0.5\textwidth}
+		\begin{figure}
+			\includegraphics[width=\textwidth]{images/CF_use_case.pdf}
+			\caption{CF-HybridBERT4Rec architecture and input in the described setting}
+		\end{figure}
+	\end{columns}
 \end{frame}
 
 \section{Evaluation}

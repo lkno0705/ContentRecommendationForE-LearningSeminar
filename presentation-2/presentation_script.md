@@ -51,7 +51,12 @@
 
 ## Section 2: The setting
 - Users rate Learning objectives based on their difficulty for them
-- 
+- We have:
+  - A Collection of Users $U$
+  - A Collection of Learning Objectives $T$
+  - A Collection of Exercises $X$
+- We can map each pair of Users $U$ and Learning Objectives $T$ to a difficulty rating $D$, where for all difficulty ratings $d$, holds that they are either 1,2 or 3 (easy, medium, difficult)
+- We also have a constraint on our Exercise collection, where for each exercise $x$ in the Collection, there exists a learning objective $t$ from the Learning Objective Collection, such that a tuple of the exercise and learning objective can be build that is included in the Relation $R_{t,x}$, which maps each exercise to a Learning Objective
 
 ## Section 3: Model Adaptation
 
