@@ -50,6 +50,8 @@
   - Combines the outputs of the previous two parts, in order to predict a rating the target user $u$ would assign to the target item $v$
 
 ## Section 2: The setting
+- Users rate Learning objectives based on their difficulty for them
+- 
 
 ## Section 3: Model Adaptation
 

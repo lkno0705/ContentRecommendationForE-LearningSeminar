@@ -47,12 +47,13 @@
 \tableofcontents
 \end{frame}
 
-\section[Recap]{Recap: Sequential Modelling \& HybridBERT4Rec}
+\section{Recap}
 
 \begin{frame}
 	\centering\textbf{\LARGE{Recap: Sequential Modelling \& HybridBERT4Rec}}
 \end{frame}
 
+\subsection{Sequential Modelling}
 \begin{frame}{Traditional CBF VS Sequential CBF}
 	\begin{columns}
 	\column{0.5\textwidth}
@@ -77,10 +78,24 @@
 	\end{columns}
 \end{frame}
 
+\subsection{HybridBERT4Rec}
 \begin{frame}{HybridBERT4Rec Architecture}
 	\begin{figure}
 		\includegraphics[height=0.6\textheight]{images/hybridBERT4Rec_high_level.pdf}
 		\caption{High level overview of HybridBERT4Recs Architecture. \cite{channarongHybridBERT4RecHybridContentBased2022}}
+	\end{figure}
+\end{frame}
+
+\section{The Setting}
+
+\begin{frame}
+	\centering\textbf{\LARGE{The Setting}}
+\end{frame}
+
+\begin{frame}{The Setting}
+	\begin{figure}
+		\includegraphics[height=0.6\textheight]{images/setting.pdf}
+		\caption{The Setting, consisting of a user collection $U$, a collection of learning ojectives $T$ and a collection of exercises $X$, which can be used to predict a ranking $R(u)$ for a given user $u$.}
 	\end{figure}
 \end{frame}
 
