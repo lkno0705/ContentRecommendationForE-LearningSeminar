@@ -1,0 +1,58 @@
+%% Beispiel-Präsentation mit LaTeX Beamer im KIT-Design
+%% entsprechend den Gestaltungsrichtlinien vom 1. August 2020
+%%
+%% Siehe https://sdqweb.ipd.kit.edu/wiki/Dokumentvorlagen
+
+%% Beispiel-Präsentation
+\documentclass[en]{sdqbeamer}
+ 
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%% Titelbild
+\titleimage{unima_schloss}
+
+%% Gruppenlogo
+\grouplogo{} 
+
+%% Gruppenname und Breite (Standard: 50 mm)
+\groupname{Mannheim Master Datascience}
+%\groupnamewidth{50mm}
+
+% Beginn der Präsentation
+
+\title[HybridBERT4Rec]{HybridBERT4Rec: A Hybrid Recommender System Based on BERT}
+\subtitle{Sequential Content-Based and Collaborative Filtering}
+\author[Leon Knorr]{Leon Knorr}
+
+\date[\today]{\today}
+
+% Literatur 
+ 
+\usepackage[citestyle=numeric,bibstyle=numeric,hyperref,backend=biber]{biblatex}
+\addbibresource{sources.bib}
+\bibhang1em
+
+\begin{document}
+ 
+%Titelseite
+\KITtitleframe
+
+%Inhaltsverzeichnis
+\begin{frame}{Table of Contents}
+\tableofcontents
+\end{frame}
+
+\appendix
+\beginbackup
+\begin{frame}{References}
+	\printbibliography
+\end{frame}
+
+\backupend
+
+\end{document}
