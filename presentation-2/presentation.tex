@@ -47,6 +47,43 @@
 \tableofcontents
 \end{frame}
 
+\section[Recap]{Recap: Sequential Modelling \& HybridBERT4Rec}
+
+\begin{frame}
+	\centering\textbf{\LARGE{Recap: Sequential Modelling \& HybridBERT4Rec}}
+\end{frame}
+
+\begin{frame}{Traditional CBF VS Sequential CBF}
+	\begin{columns}
+	\column{0.5\textwidth}
+		\begin{figure}
+			\includegraphics[width=\textwidth]{images/Alice_history.pdf}
+			\caption{Example history for Alice in traditional CBF \cite{channarongHybridBERT4RecHybridContentBased2022}}
+		\end{figure}
+		\begin{itemize}
+			\item models \textbf{general} user preference \pause
+			\item \textbf{BUT:} User preferences \underline{\textbf{change over time!}} \cite{wangSequentialRecommenderSystems2019}
+		\end{itemize}
+
+	\column{.5\textwidth}
+		\begin{figure}\pause
+			\includegraphics[width=\textwidth]{images/Alice_seq.pdf}
+			\caption{Example history for Alice in sequential CBF \cite{channarongHybridBERT4RecHybridContentBased2022}}
+		\end{figure}
+		\begin{itemize}
+			\item Considers the \textbf{order} of historical interactions
+			\item Allows the modelling of \enquote{temporary spikes} of interests, as well as the general preferences \cite{wangSequentialRecommenderSystems2019}
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{HybridBERT4Rec Architecture}
+	\begin{figure}
+		\includegraphics[height=0.6\textheight]{images/hybridBERT4Rec_high_level.pdf}
+		\caption{High level overview of HybridBERT4Recs Architecture. \cite{channarongHybridBERT4RecHybridContentBased2022}}
+	\end{figure}
+\end{frame}
+
 \appendix
 \beginbackup
 \begin{frame}{References}
