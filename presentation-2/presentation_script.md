@@ -55,7 +55,7 @@
   - A Collection of Users $U$
   - A Collection of Learning Objectives $T$
   - A Collection of Exercises $X$
-- We can map each pair of Users $U$ and Learning Objectives $T$ to a difficulty rating $D$, where for all difficulty ratings $d$, holds that they are either 1,2 or 3 (easy, medium, difficult)
+- We can map each pair of Users $U$ and Learning Objectives $T$ to a difficulty rating $D$, where each difficulty rating is either 1,2 or 3 (easy, medium, difficult)
 - We also have a constraint on our Exercise collection, where for each exercise $x$ in the Collection, there exists a learning objective $t$ from the Learning Objective Collection, such that a tuple of the exercise and learning objective can be build that is included in the Relation $R_{t,x}$, which maps each exercise to a Learning Objective
 
 ## Section 3: Model Adaptation
@@ -65,10 +65,10 @@
 - But the input data is created different
 - We still input a sequence of users
 - However, instead of considering all users who have rated the target learning objective (formerly the target item), we impose a more restrictive filtering constraint
-- a user $u$ is in the set of Neighbors for target user $u_m$ and the target learning objective $t$ **if and only if** for all u and the target user in the User collection and the target learning objective, it holds that the difficulty rating of user $u$ for learning objective t is equal to the difficulty rating of the target user $u_m$ for learning objective $t$ → Only users which gave the same difficulty rating to the current target learning objective as the target user are considered neighbors
-- a user-similarity probability distribution of all
+- a user $u$ is in the set of Neighbors for target user $u_m$ and the target learning objective $t$ **if and only if**, the difficulty rating $u$ has assigned to t, $d_{u,t}$, is equal to the difficulty rating $u_m$ has assigned $t$, $d_{u_m, t}$ → Only users which gave the same difficulty rating to the current target learning objective as the target user are considered neighbors
+- this model then yields, as before, a user-similarity probability distribution of all
 users over the target (masked) user
-- By applying the aforementioned filtering criteria, we essentially limit the set of users who can receive a high similarity probability to users who have the same level difficulties with the same learning objective → With that, we can later recommend exercises that may have helped others as well and the exercises are more likely to have a difficulty level that fits the target user.
+- By applying the aforementioned filtering criteria, we essentially limit the set of users who can receive a high similarity probability to users who have the same level difficulties with the same learning objective → With that, we can later recommend exercises that may have helped others as well and these exercises are more likely to have a difficulty level that fits the target user.
 - Without this filtering criteria, the target user may be deemed similar to another user who rated the target learning objective $t$ as easy, even though the target user has rated it as $difficult$. This could result in the recommendation of either way to difficult exercises or the recommendation of exercises from a completely different topic, just because the user embeddings might be very similar despite the difference in the difficulty rating for the current learning objective.
 
 ## Section 4: Evaluation
