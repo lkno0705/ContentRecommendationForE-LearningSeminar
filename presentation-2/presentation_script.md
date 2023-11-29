@@ -60,16 +60,27 @@
 
 ## Section 3: Model Adaptation
 
+### CBF-HybridBERT4Rec
+- No architecture changes needed
+- However, input data needs to be properly defined, as it is not given directly by the use case
+- First lets look a bit closer at the history of a user H(u):
+  - The history of user u is defined to be an ordered set of tuples $(x_i, t_j, s_k)$ for which hold, that the tuple $(x_i, t_j)$ is present in $R_{t,x}$, with the set being ordered by s, the timestamp, such that $s_{k-1} \leq s_k$ → The history of a user consists of the exercise and its corresponding topic the user has completed, along with the timestamp of the time of completion
+- Based on that, we can define our model input $I(u)$ to be an ordered set of every $x_i$, which is included in the users' history $H(u)$. The set preserves / follows the same order as $H(u)$ → our model input at this point in time is the history of exercises of user $u$
+- Model yields: the interaction probability distribution of all
+items with the user u over the target item → we want to predict the item the user is most likely to interact with next based on its history
+    - This prediction is not specific to a learning objective but is limited to the learning objectives present in the users' history
+    - To push predictions further in the direction of a specific learning objective, we can filter for a specific $t$ when constructing I(u) → Increase compute costs significantly, as we'd need to run this CBF part $T\times U$ times.
+
 ### CF-HybridBERT4Rec
 - No changes in terms of Architecture needed
 - But the input data is created different
 - We still input a sequence of users
 - However, instead of considering all users who have rated the target learning objective (formerly the target item), we impose a more restrictive filtering constraint
-- a user $u$ is in the set of Neighbors for target user $u_m$ and the target learning objective $t$ **if and only if**, the difficulty rating $u$ has assigned to t, $d_{u,t}$, is equal to the difficulty rating $u_m$ has assigned $t$, $d_{u_m, t}$ → Only users which gave the same difficulty rating to the current target learning objective as the target user are considered neighbors
-- this model then yields, as before, a user-similarity probability distribution of all
-users over the target (masked) user
-- By applying the aforementioned filtering criteria, we essentially limit the set of users who can receive a high similarity probability to users who have the same level difficulties with the same learning objective → With that, we can later recommend exercises that may have helped others as well and these exercises are more likely to have a difficulty level that fits the target user.
-- Without this filtering criteria, the target user may be deemed similar to another user who rated the target learning objective $t$ as easy, even though the target user has rated it as $difficult$. This could result in the recommendation of either way to difficult exercises or the recommendation of exercises from a completely different topic, just because the user embeddings might be very similar despite the difference in the difficulty rating for the current learning objective.
+- a user $u$ is in the set of Neighbors for target user $u_m$ and the target learning objective $t$ **if and only if**, the difficulty rating $d_{u,t}$ $u$ has assigned to t, is equal to the difficulty rating $d_{u_m, t}$, $u_m$ has assigned $t$ **and** if the target item $(x,t)$ is included in the users' history → Only users which gave the same difficulty rating to the current target learning objective as the target user and users' who already completed the target exercise are considered neighbors
+- this model then yields, as before, a user-similarity probability distribution of all neighboring users over the target (masked) user
+- By applying the aforementioned filtering criteria, we essentially limit the set of users who can receive a high similarity probability to users who have the same level of difficulty with the same learning objective → With that, we can later recommend exercises that may have helped others as well and these exercises are more likely to have a difficulty level that fits the target user.
+- Without this filtering criteria, the target user may be deemed similar to another user who rated the target learning objective $t$ as easy, even though the target user has rated it as $difficult$. This could result in the recommendation of way to difficult exercises. → e.g. the user embeddings only differ very slightly except for the difficulty rating for topic t.
+- This approach allows the recommendation of exercises from a completely different learning objective later on, if the user embeddings are not specific to the given learning objective.
 
 ## Section 4: Evaluation
 

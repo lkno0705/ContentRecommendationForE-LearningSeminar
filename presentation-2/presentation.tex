@@ -104,11 +104,28 @@
 	\centering\textbf{\LARGE{Model Adaption}}
 \end{frame}
 
+\begin{frame}{CBF-HybridBERT4Rec}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\begin{itemize}
+				\item $H(u) := (\{(x_i, t_j, s_k)| (x_i, t_j) \in R_{t,x}\}, \leq)$, with $s_{k-1} \leq s_k$
+				\item $I(u) := (\{x_i|(x_i, t_j, s_k) \in H(u)\}, \leq)$
+				\item $\overrightarrow{R_{u,t}}$: the interaction probability distribution of all items with the user $u$ over the target item
+			\end{itemize}
+		\column{0.5\textwidth}
+		\begin{figure}
+			\includegraphics[width=\textwidth]{images/cbf.pdf}
+			\caption{CBF-HybridBERT4Rec architecture and input in the described setting}
+		\end{figure}
+	\end{columns}
+\end{frame}
+
+
 \begin{frame}{CF-HybridBERT4Rec}
 	\begin{columns}
 		\column{0.5\textwidth}
 			\begin{itemize}
-				\item $u \in N \iff d_{u, t} = d_{u_{m}, t}, \mathrm{with} \, U_m \in U, U \in U, t \in T$, $N$ being the set of neighbors for target (masked) user $u_{m}$ and learning objective $t$
+				\item $u \in N \iff d_{u, t} = d_{u_m, t} \, \wedge$ $(x, t) \in \{(x,t)|(x,t,s_k) \in H(u)\}$, with $U_m \in U, U \in U, t \in T$, $N$ being the set of neighbors for target (masked) user $u_{m}$ and learning objective $t$
 				\item $\overrightarrow{R_{t,u}}$: a user-similarity probability distribution of all users over the target (masked) user
 			\end{itemize}
 		\column{0.5\textwidth}
