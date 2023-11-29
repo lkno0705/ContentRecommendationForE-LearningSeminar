@@ -82,5 +82,8 @@ items with the user u over the target item → we want to predict the item the u
 - Without this filtering criteria, the target user may be deemed similar to another user who rated the target learning objective $t$ as easy, even though the target user has rated it as $difficult$. This could result in the recommendation of way to difficult exercises. → e.g. the user embeddings only differ very slightly except for the difficulty rating for topic t.
 - This approach allows the recommendation of exercises from a completely different learning objective later on, if the user embeddings are not specific to the given learning objective.
 
+### The complete model
+
+
 ## Section 4: Evaluation
 

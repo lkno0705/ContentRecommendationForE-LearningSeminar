@@ -5,6 +5,8 @@
 
 %% Beispiel-Präsentation
 \documentclass[en]{sdqbeamer}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
  
 \newcommand\blfootnote[1]{%
   \begingroup
@@ -120,7 +122,6 @@
 	\end{columns}
 \end{frame}
 
-
 \begin{frame}{CF-HybridBERT4Rec}
 	\begin{columns}
 		\column{0.5\textwidth}
@@ -133,6 +134,30 @@
 			\includegraphics[width=\textwidth]{images/CF_use_case.pdf}
 			\caption{CF-HybridBERT4Rec architecture and input in the described setting}
 		\end{figure}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Bringing It All Together}
+	\begin{columns}
+		\column{0.5\textwidth}
+		\begin{algorithm}[H]
+			\caption{HybridBERT4Rec in an E-Learning Setting}
+			\begin{algorithmic}[1]
+				\ForAll{$u_m \in U$}
+					\State $r_{x,u_m} = \texttt{cbf\_hybridbert4rec}(H(u_m))$
+					\ForAll{$(x,t) \in R_{t,x}$}
+						\State $r_{u, x} = \texttt{cf\_bert4rec}(u_m,t,x)$
+						\State $\hat{r}_{u,x} = \texttt{prediction\_layer}(r_{x,u}, r_{u,x})$
+					\EndFor
+				\EndFor
+			\end{algorithmic}
+		\end{algorithm}
+		\column{0.5\textwidth}
+		\begin{itemize}
+			\item Yields a rating $\hat{r}_{u,x}$ for each exercise and for each user
+			\item Construct an overall rating of exercises by sorting the ratings
+			\item Construct a topic specific rating by filtering for a topic and sorting the ratings
+		\end{itemize}
 	\end{columns}
 \end{frame}
 
