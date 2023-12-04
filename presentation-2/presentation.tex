@@ -165,6 +165,22 @@
 \begin{frame}
 	\centering\textbf{\LARGE{Evaluation}}
 \end{frame}
+\begin{frame}{The Problem}
+	\begin{itemize}
+		\item No given Test data with relevance annotations!
+		\item Annotating the whole collection requires $U \times T \times X$ relevance annotations
+		\item \textbf{INFEASIBLE} for large $U, X$ and $T$
+	\end{itemize}
+\end{frame}
+\begin{frame}{Pooling}
+	\begin{itemize}
+		\item For most queries only $N << X$ documents are relevant
+		\item[$\Rightarrow$] We only annotate the top $N$ results of every query
+		\item[$\Rightarrow$] $U \times T \times N$ relevance annotations needed
+		\item Compute P@K, R@K, NDCG etc.
+		\item \textbf{Shortcoming}: Scores are only \textbf{approximations!}
+	\end{itemize}
+\end{frame}
 
 \appendix
 \beginbackup

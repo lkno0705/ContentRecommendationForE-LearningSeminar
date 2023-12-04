@@ -83,7 +83,20 @@ items with the user u over the target item → we want to predict the item the u
 - This approach allows the recommendation of exercises from a completely different learning objective later on, if the user embeddings are not specific to the given learning objective.
 
 ### The complete model
-
+- Explain final algorithm
+- Yields a rating $\hat{r}_{u,x}$ for each exercise and for each user
+- Construct an overall rating of exercises by sorting the ratings of all exercises regardless of their assigned learning objective
+- Construct a topic specific rating by filtering for a learning objective and then sorting the ratings in each learning objective group
 
 ## Section 4: Evaluation
 
+### Pooling
+- The Problem: We have no test set that includes binary or graded relevance ratings and annotating the whole exercise collection for every user and every learning objective with those ratings is infeasible as this would require $U \times T \times X$ relevance annotations
+- That's why we want to use a method called Pooling
+- The idea:
+  - For most queries (user, learning objective combinations) only a tiny fraction of exercises is actually relevant → only $N << X$ documents are actually relevant for our current query
+  - An ideal retrieval system would of course rank these on top
+  - → We only annotate the top $n$ results in a ranking → We only need $U \times T \times N$ annotations
+- With these annotations, we can then compute the typical IR-Evaluation metrics, such as P@k, R@k, NDCG, AP, MAP etc.
+- Shortcoming of this approach: it is not given that all relevant documents are included in the top $n$ positions of the ranking → we will ignore some relevant documents and thus the scores are only an approximation.
+- Nevertheless, this method marks a great balance between annotation work and evaluation accuracy if configured well.
