@@ -75,6 +75,10 @@
             \caption{Schematic of HybridBERT4Recs Prediction layer, which uses a generalization of Matrix Factorization based on Neural Networks with Sigmoid activations to predict the rating $\hat{r}_{u,v}$ user $u$ would assign to item $v$ \cite{channarongHybridBERT4RecHybridContentBased2022}.}
             \label{fig:pred_layer}
         \end{figure}
+        \begin{equation}
+            \hat{r}_{u,v} = \sigma(WR(u,v) + b), \text{ with }
+            R(u,v) = R_{uv} \odot R_{vu}
+        \end{equation}
 
         \subsection{Strengths \& Weaknesses}
 
@@ -113,6 +117,17 @@
         \caption{The adapted CBF-HybridBERT4Rec model on the left and the adapted CF-HybridBERT4Rec model on the right.}
         \label{fig:modelAdapt}
     \end{figure}
+
+    \begin{equation}
+        H(u) := (\{(x_i, t_j, s_k)| (x_i, t_j) \in R_{t,x}\}, \leq)
+    \end{equation}
+    \begin{equation}
+        I(u) := (\{x_i|(x_i, t_j, s_k) \in H(u)\}, \leq)
+    \end{equation}
+
+    \begin{equation}
+        u \in N \iff d_{u, t} = d_{u_m, t} \text{\,} \wedge (x, t) \in \{(x,t)|(x,t,s_k) \in H(u)\}
+    \end{equation}
 
     \begin{algorithm}[ht!]
         \caption{HybridBERT4Rec in an E-Learning Setting}
