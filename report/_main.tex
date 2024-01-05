@@ -1,5 +1,7 @@
 \documentclass{Academic}
 \usepackage{csquotes}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
 \addbibresource{references.bib}
 
@@ -11,46 +13,127 @@
     \renewcommand{\MyAuthor}{Leon Knorr}
     \renewcommand{\MyDepartment}{Mannheim Master of Datascience}
     \renewcommand{\ID}{1902854}
-    \renewcommand{\Keywords}{Education, AI}
+    \renewcommand{\Keywords}{Education, AI, E-Learning}
     \maketitle
 %\vspace{-1.9em}\noindent\rule{\textwidth}{1pt} %add this line if not using abstract
     %\onehalfspacing
 %TC:endignore
 
     \section{Introduction}
+    In the dynamic landscape of today's knowledge-driven society and global economics, the concept of life-long learning has evolved into a cornerstone for personal and professional development. It ensures the competitiveness of individuals in a globalized market, while also aiding in overcoming social challenges, such as demographic change, social cohesion or public health through continuous education. Because of its key-role in overcoming today's challenges, many governments and corporations invested heavily in lifelong learning offerings and frameworks \cite{rubensonAdultLearningEducation2011}. This investment can be seen by observing the vast landscape of different learning platforms, which have emerged over the last couple of years, ranging from publicly funded E-Learning solutions such as Moodle\cite{StartseiteMoodleOrg} or ILIAS\cite{Ilias}, to private corporate platforms such as Linked-In Learning\cite{LinkedInLearningMit}. As individuals embark on continuous learning journeys on such platforms, the demand for tailored educational experiences has surged. These experiences not only include the recommendation of new content, but also content which aims to aid the user with current learning objectives. Recommender algorithms play a pivotal role in shaping these learning odysseys by providing personalized content recommendations \cite{jeevamolOntologybasedHybridElearning2021}. \\
+    In this work, the hybrid content recommendation system HybridBERT4Rec, which uses a transformer based approach to collaborative and content-based filtering techniques, is reviewed and adapted to an E-Learning use case.
 
     \section{Related Work}
 
     \section{Sequential Content Recommendation}
 
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=0.6\textwidth]{images/rnn_seq.pdf}
+        \caption{Sequential Content Recommendation with RNNs \cite{yuDynamicRecurrentModel2016}}
+        \label{fig:seqRNN}
+    \end{figure}
+
+    \FloatBarrier
+
     \section{HybridBERT4Rec}
+        \begin{figure}[ht!]
+            \centering
+            \includegraphics[width=0.6\textwidth]{images/hybridBERT4Rec_high_level.pdf}
+            \caption{High level overview of HybridBERT4Recs Architecture. \cite{channarongHybridBERT4RecHybridContentBased2022}}
+            \label{fig:highlevel}
+        \end{figure}
 
         \subsection{BERT4Rec}
+        \begin{figure}[ht!]
+            \centering
+            \includegraphics[width=0.6\textwidth]{images/BERT4Rec.pdf}
+            \caption{BERT4Rec Architecture, taking item embeddings $v_t^u$ from user $u$'s history as input and predicts the next item $v_m^u$, u is likely to interact with \cite{sunBERT4RecSequentialRecommendation2019}.}
+            \label{fig:bert4rec}
+        \end{figure}
 
         \subsection{CF-HybridBERT4Rec}
+        \begin{figure}[ht!]
+            \centering
+            \includegraphics[width=0.6\textwidth]{images/CF-HybridBERT4Rec.pdf}
+            \caption{CF-HybridBERT4Rec Architecture, taking user embeddings from all users that have rated the target item $v$ as input and predicts the \enquote{target item profile $\overrightarrow{R_{v,u}}$} \cite{channarongHybridBERT4RecHybridContentBased2022}.}
+            \label{fig:cf-arch}
+        \end{figure}
 
         \subsection{CBF-HybridBERT4Rec}
+        \begin{figure}[ht!]
+            \centering
+            \includegraphics[width=0.6\textwidth]{images/CBF-HybridBERT4Rec.pdf}
+            \caption{CBF-HybridBERT4Rec Architecture, taking item embeddings from a user $u$ history as input and predicts a \enquote{target user profile $\overrightarrow{R_{u,v}}$} \cite{channarongHybridBERT4RecHybridContentBased2022}.}
+            \label{fig:cbf-arch}
+        \end{figure}
 
         \subsection{Prediction Layer}
+        \begin{figure}[ht!]
+            \centering
+            \includegraphics[width=0.5\textwidth]{images/Prediction_Layer.pdf}
+            \caption{Schematic of HybridBERT4Recs Prediction layer, which uses a generalization of Matrix Factorization based on Neural Networks with Sigmoid activations to predict the rating $\hat{r}_{u,v}$ user $u$ would assign to item $v$ \cite{channarongHybridBERT4RecHybridContentBased2022}.}
+            \label{fig:pred_layer}
+        \end{figure}
 
         \subsection{Strengths \& Weaknesses}
 
         \subsection{Performance \& Experiments}
+        \begin{figure}[ht!]
+            \centering
+			\includegraphics[width=0.6\textwidth]{images/results.pdf}
+			\caption{Performance comparison of different recommender models on three datasets as published by the authors of HybridBERT4Rec \cite{channarongHybridBERT4RecHybridContentBased2022}.}
+            \label{fig:perfExp}
+		\end{figure}
 
     \section{Applying HybridBERT4Rec in an E-Learning Environment}
 
         \subsection{The Trivial Solution}
+        \begin{figure}[ht!]
+            \centering
+			\includegraphics[width=0.3\textwidth]{images/linked_in_landing.pdf}
+            \includegraphics[width=0.3\textwidth]{images/linked_in_course.pdf}
+			\caption{Linked-In Learning landing-page and course overview \cite{LinkedInLearningMit}.}
+            \label{fig:trivSol}
+		\end{figure}
     
         \subsection{The Setting}
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=0.6\textwidth]{images/setting.pdf}
+        \caption{The Setting, consisting of a user collection $U$ and their histories $h(u)$, a collection of learning objectives $T$ and a collection of exercises $X$, which can be used to predict a ranking $R(u)$ for a given user $u$.}
+        \label{fig:setting}
+    \end{figure}
 
-        \subsection{Model Adaption}
+    \subsection{Model Adaption}
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/cbf.pdf}
+        \includegraphics[width=0.4\textwidth]{images/CF_use_case.pdf}
+        \caption{The adapted CBF-HybridBERT4Rec model on the left and the adapted CF-HybridBERT4Rec model on the right.}
+        \label{fig:modelAdapt}
+    \end{figure}
 
-        \subsection{Solving Evaluation}
+    \begin{algorithm}[ht!]
+        \caption{HybridBERT4Rec in an E-Learning Setting}
+        \begin{algorithmic}[1]
+            \ForAll{$u_m \in U$}
+                \State $r_{x,u_m} = \texttt{cbf\_hybridbert4rec}(H(u_m))$
+                \ForAll{$(x,t) \in R_{t,x}$}
+                    \State $r_{u, x} = \texttt{cf\_bert4rec}(u_m,t,x)$
+                    \State $\hat{r}_{u,x} = \texttt{prediction\_layer}(r_{x,u}, r_{u,x})$
+                \EndFor
+            \EndFor
+        \end{algorithmic}
+    \end{algorithm}
 
-        \subsection{Remaining Possible Issues}
-    
+    \FloatBarrier
+    \subsection{Solving Evaluation}
+    ABC
+    \subsection{Remaining Possible Issues}
+    ABC
     \section{Conclusion}
-
+    ABC
 %TC:ignore
 %\clearpage %add new page for references
     \singlespacing
