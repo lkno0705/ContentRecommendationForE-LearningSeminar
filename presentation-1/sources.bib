@@ -29,6 +29,23 @@
   file = {/Users/I516998/Zotero/storage/M5CVYY3A/He et al. - 2017 - Neural Collaborative Filtering.pdf;/Users/I516998/Zotero/storage/RB6NQHIA/1708.html}
 }
 
+@misc{hidasiSessionbasedRecommendationsRecurrent2016,
+  title = {Session-Based {{Recommendations}} with {{Recurrent Neural Networks}}},
+  author = {Hidasi, Bal{\'a}zs and Karatzoglou, Alexandros and Baltrunas, Linas and Tikk, Domonkos},
+  year = {2016},
+  month = mar,
+  number = {arXiv:1511.06939},
+  eprint = {1511.06939},
+  primaryclass = {cs},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.1511.06939},
+  urldate = {2024-01-09},
+  abstract = {We apply recurrent neural networks (RNN) on a new domain, namely recommender systems. Real-life recommender systems often face the problem of having to base recommendations only on short session-based data (e.g. a small sportsware website) instead of long user histories (as in the case of Netflix). In this situation the frequently praised matrix factorization approaches are not accurate. This problem is usually overcome in practice by resorting to item-to-item recommendations, i.e. recommending similar items. We argue that by modeling the whole session, more accurate recommendations can be provided. We therefore propose an RNN-based approach for session-based recommendations. Our approach also considers practical aspects of the task and introduces several modifications to classic RNNs such as a ranking loss function that make it more viable for this specific problem. Experimental results on two data-sets show marked improvements over widely used approaches.},
+  archiveprefix = {arxiv},
+  keywords = {Computer Science - Information Retrieval,Computer Science - Machine Learning,Computer Science - Neural and Evolutionary Computing},
+  file = {/Users/I516998/Zotero/storage/IQK9MPWA/Hidasi et al. - 2016 - Session-based Recommendations with Recurrent Neura.pdf;/Users/I516998/Zotero/storage/M2BX4BDW/1511.html}
+}
+
 @misc{Ilias,
   title = {Ilias.De},
   urldate = {2024-01-05},
@@ -53,6 +70,23 @@
   keywords = {Cold-start problem,Content recommender systems,E-learning,Learning management system,Ontology,Personalized learning environment}
 }
 
+@misc{kangSelfAttentiveSequentialRecommendation2018,
+  title = {Self-{{Attentive Sequential Recommendation}}},
+  author = {Kang, Wang-Cheng and McAuley, Julian},
+  year = {2018},
+  month = aug,
+  number = {arXiv:1808.09781},
+  eprint = {1808.09781},
+  primaryclass = {cs},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.1808.09781},
+  urldate = {2024-01-09},
+  abstract = {Sequential dynamics are a key feature of many modern recommender systems, which seek to capture the `context' of users' activities on the basis of actions they have performed recently. To capture such patterns, two approaches have proliferated: Markov Chains (MCs) and Recurrent Neural Networks (RNNs). Markov Chains assume that a user's next action can be predicted on the basis of just their last (or last few) actions, while RNNs in principle allow for longer-term semantics to be uncovered. Generally speaking, MC-based methods perform best in extremely sparse datasets, where model parsimony is critical, while RNNs perform better in denser datasets where higher model complexity is affordable. The goal of our work is to balance these two goals, by proposing a self-attention based sequential model (SASRec) that allows us to capture long-term semantics (like an RNN), but, using an attention mechanism, makes its predictions based on relatively few actions (like an MC). At each time step, SASRec seeks to identify which items are `relevant' from a user's action history, and use them to predict the next item. Extensive empirical studies show that our method outperforms various state-of-the-art sequential models (including MC/CNN/RNN-based approaches) on both sparse and dense datasets. Moreover, the model is an order of magnitude more efficient than comparable CNN/RNN-based models. Visualizations on attention weights also show how our model adaptively handles datasets with various density, and uncovers meaningful patterns in activity sequences.},
+  archiveprefix = {arxiv},
+  keywords = {Computer Science - Information Retrieval,Computer Science - Machine Learning},
+  file = {/Users/I516998/Zotero/storage/N3B5CKQ9/Kang and McAuley - 2018 - Self-Attentive Sequential Recommendation.pdf;/Users/I516998/Zotero/storage/2HLJMQ43/1808.html}
+}
+
 @misc{LinkedInLearningMit,
   title = {{LinkedIn Learning mit Lynda: Onlinekurse aus dem Business-, Technik- und Kreativbereich}},
   shorttitle = {{LinkedIn Learning mit Lynda}},
@@ -62,6 +96,26 @@
   howpublished = {https://de.linkedin.com/learning/},
   langid = {ngerman},
   file = {/Users/I516998/Zotero/storage/SQJCFMPW/learning.html}
+}
+
+@misc{MovieLens1MDataset2015,
+  title = {{{MovieLens 1M Dataset}}},
+  year = {2015},
+  month = sep,
+  journal = {GroupLens},
+  urldate = {2024-01-09},
+  abstract = {MovieLens 1M movie ratings. Stable benchmark dataset. 1 million ratings from 6000 users on 4000 movies. Released 2/2003. README.txt ml-1m.zip (size: 6 MB, checksum) Permalink:},
+  howpublished = {https://grouplens.org/datasets/movielens/1m/},
+  langid = {english},
+  file = {/Users/I516998/Zotero/storage/BQNJHGMB/1m.html}
+}
+
+@article{radfordImprovingLanguageUnderstanding,
+  title = {Improving {{Language Understanding}} by {{Generative Pre-Training}}},
+  author = {Radford, Alec and Narasimhan, Karthik and Salimans, Tim and Sutskever, Ilya},
+  abstract = {Natural language understanding comprises a wide range of diverse tasks such as textual entailment, question answering, semantic similarity assessment, and document classification. Although large unlabeled text corpora are abundant, labeled data for learning these specific tasks is scarce, making it challenging for discriminatively trained models to perform adequately. We demonstrate that large gains on these tasks can be realized by generative pre-training of a language model on a diverse corpus of unlabeled text, followed by discriminative fine-tuning on each specific task. In contrast to previous approaches, we make use of task-aware input transformations during fine-tuning to achieve effective transfer while requiring minimal changes to the model architecture. We demonstrate the effectiveness of our approach on a wide range of benchmarks for natural language understanding. Our general task-agnostic model outperforms discriminatively trained models that use architectures specifically crafted for each task, significantly improving upon the state of the art in 9 out of the 12 tasks studied. For instance, we achieve absolute improvements of 8.9\% on commonsense reasoning (Stories Cloze Test), 5.7\% on question answering (RACE), and 1.5\% on textual entailment (MultiNLI).},
+  langid = {english},
+  file = {/Users/I516998/Zotero/storage/7YGQ5F4D/Radford et al. - Improving Language Understanding by Generative Pre.pdf}
 }
 
 @book{rubensonAdultLearningEducation2011,
@@ -113,6 +167,23 @@
   file = {/Users/I516998/Zotero/storage/LUYIPKBX/Sun et al. - 2019 - BERT4Rec Sequential Recommendation with Bidirecti.pdf;/Users/I516998/Zotero/storage/FCC748IB/1904.html}
 }
 
+@misc{tangPersonalizedTopNSequential2018,
+  title = {Personalized {{Top-N Sequential Recommendation}} via {{Convolutional Sequence Embedding}}},
+  author = {Tang, Jiaxi and Wang, Ke},
+  year = {2018},
+  month = sep,
+  number = {arXiv:1809.07426},
+  eprint = {1809.07426},
+  primaryclass = {cs},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.1809.07426},
+  urldate = {2024-01-09},
+  abstract = {Top-\$N\$ sequential recommendation models each user as a sequence of items interacted in the past and aims to predict top-\$N\$ ranked items that a user will likely interact in a `near future'. The order of interaction implies that sequential patterns play an important role where more recent items in a sequence have a larger impact on the next item. In this paper, we propose a Convolutional Sequence Embedding Recommendation Model ({\textbackslash}emph\{Caser\}) as a solution to address this requirement. The idea is to embed a sequence of recent items into an `image' in the time and latent spaces and learn sequential patterns as local features of the image using convolutional filters. This approach provides a unified and flexible network structure for capturing both general preferences and sequential patterns. The experiments on public datasets demonstrated that Caser consistently outperforms state-of-the-art sequential recommendation methods on a variety of common evaluation metrics.},
+  archiveprefix = {arxiv},
+  keywords = {Computer Science - Information Retrieval,Computer Science - Machine Learning},
+  file = {/Users/I516998/Zotero/storage/3SRV7HMD/Tang and Wang - 2018 - Personalized Top-N Sequential Recommendation via C.pdf;/Users/I516998/Zotero/storage/H68HN67R/1809.html}
+}
+
 @misc{vaswaniAttentionAllYou2017,
   title = {Attention {{Is All You Need}}},
   author = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, Lukasz and Polosukhin, Illia},
@@ -130,6 +201,21 @@
   file = {/Users/I516998/Zotero/storage/B8HZNEVY/Vaswani et al. - 2017 - Attention Is All You Need.pdf;/Users/I516998/Zotero/storage/DPBGKNR6/1706.html}
 }
 
+@inproceedings{wanFineGrainedSpoilerDetection2019,
+  title = {Fine-{{Grained Spoiler Detection}} from {{Large-Scale Review Corpora}}},
+  booktitle = {Proceedings of the 57th {{Annual Meeting}} of the {{Association}} for {{Computational Linguistics}}},
+  author = {Wan, Mengting and Misra, Rishabh and Nakashole, Ndapa and McAuley, Julian},
+  year = {2019},
+  pages = {2605--2610},
+  publisher = {{Association for Computational Linguistics}},
+  address = {{Florence, Italy}},
+  doi = {10.18653/v1/P19-1248},
+  urldate = {2024-01-09},
+  abstract = {This paper presents computational approaches for automatically detecting critical plot twists in reviews of media products. First, we created a large-scale book review dataset that includes fine-grained spoiler annotations at the sentence-level, as well as book and (anonymized) user information. Second, we carefully analyzed this dataset, and found that: spoiler language tends to be book-specific; spoiler distributions vary greatly across books and review authors; and spoiler sentences tend to jointly appear in the latter part of reviews. Third, inspired by these findings, we developed an end-to-end neural network architecture to detect spoiler sentences in review corpora. Quantitative and qualitative results demonstrate that the proposed method substantially outperforms existing baselines.},
+  langid = {english},
+  file = {/Users/I516998/Zotero/storage/QF6PJMG6/Wan et al. - 2019 - Fine-Grained Spoiler Detection from Large-Scale Re.pdf}
+}
+
 @article{wangSequentialRecommenderSystems2019,
   title = {Sequential {{Recommender Systems}}: {{Challenges}}, {{Progress}} and {{Prospects}}},
   shorttitle = {Sequential {{Recommender Systems}}},
@@ -139,6 +225,12 @@
   urldate = {2023-11-02},
   abstract = {Electronic proceedings of IJCAI 2019},
   file = {/Users/I516998/Zotero/storage/L4I2KE8J/883.html}
+}
+
+@misc{YelpDataset,
+  title = {Yelp {{Dataset}}},
+  urldate = {2024-01-09},
+  howpublished = {https://www.yelp.com/dataset}
 }
 
 @inproceedings{yuDynamicRecurrentModel2016,
