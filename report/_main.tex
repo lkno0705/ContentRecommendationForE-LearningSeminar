@@ -153,14 +153,24 @@
 		\end{figure}
         As HybridBERT4Rec was originally developed and tested on the MovieLens1M \cite{MovieLens1MDataset2015} dataset, applying it in a video based setting which logs user watch histories and rating is trivial. An example for such an environment is Linked-In Learning \cite{LinkedInLearningMit}. As shown in Figure \ref{fig:trivSol}, Linked-In Learning offers video based learning courses, which can be \enquote{liked}, it also logs a history including which courses have been started and completed. In this setting, the history logged by the platform can be used directly to form the inputs for the CBF-BERT4Rec part of HybridBERT4Rec, similarly as with the original movie data. For the CF-Part, the \enquote{like} of a course can be seen as rating information. With that, every user who liked a course can be defined as a neighbor and be used in order to construct the user sequence for the CF-Part. As a result, the CF-Part can also be used directly, showing that HybridBERT4Rec can be applied to such a scenario without any necessary changes or adaptations, due to its similarity to movie recommendations.
     
-        \subsection{The Setting}
+        \subsection{Recommending Exercises to Create Personalized Learning Experiences for Students}
+        However, if the E-Learning environment is more involved, HybridBERT4Rec can't be applied directly anymore without carefully defining its input and output data. To showcase such a scenario, an exercise recommendation task in an inverted classroom setting is considered. In this setting, students watch videos about different topics, which are clustered into Learning Objectives. After working through the material for each Learning Objective, students are asked to assign the Learning Objective a difficulty level. The recommendation algorithm should then recommend exercises to the student (user) which (presumably) fit their skill level. A more formal definition of this setting is shown in Figure \ref{fig:setting}.
         \begin{figure}[ht!]
             \centering
-            \includegraphics[width=0.6\textwidth]{images/setting.pdf}
+            \includegraphics[width=0.7\textwidth]{images/setting.pdf}
             \caption{The Setting, consisting of a user collection $U$ and their histories $h(u)$, a collection of learning objectives $T$ and a collection of exercises $X$, which can be used to predict a ranking $R(u)$ for a given user $u$.}
             \label{fig:setting}
         \end{figure}
+        Let $U$ represent the platform's user collection, encompassing every user (student) on the platform, alongside their exercise history $H(u)$. The collection $T$ includes Learning Objectives, storing each learning objective with its associated videos available on the platform. Similarly, the exercise collection $X$ comprises every exercise available on the platform. The difficulty rating $d$ a user $u \in U$ assigns to learning objective $t \in T$ is then given by $f:T \times U \rightarrow D, (t,u) \rightarrow d, \text{ with } D = \{1,2,3\}$. Here, each number in $D$ represents a difficulty level:
+        \begin{itemize}
+            \item $1$: Easy, the student $u$ encounters no issues solving complex tasks related to learning objective $t$,
+            \item $2$: Medium, the student $u$ experiences some difficulty but has grasped the core principles assigned to learning objective $t$,
+            \item $3$: Difficult, the student $u$ faces significant challenges in solving tasks related to learning objective $t$ and has not yet understood the core principles.
+        \end{itemize}
+        It is important to note that the learning objective collection and exercise collection exhibit a one-to-many relationship denoted by $R_{t,x}$. This relationship signifies, that for every exercise $x$ in the exercise collection, there must exist one learning objective $t$ in the learning objective collection, such that the tuple $(x,T)$ is in the relation $R_{t,x}$. In other words, every exercise has to be assigned to exactly one learning objective, whereas one learning objective can have multiple exercises assigned to it, this relation is then stored in $R_{t,x}$.\\
+        The task of the recommendation model is then to process the available data and produce a ranking $R(u)$ for target user $u$, which encompasses different exercises, which fit the user's difficulty level for different learning objectives.
         
+
         \FloatBarrier
         \subsection{Model Adaption}
         \begin{figure}[ht!]
