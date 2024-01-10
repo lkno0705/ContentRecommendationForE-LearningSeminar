@@ -141,62 +141,65 @@
         In addition, the authors don't provide much information about how the data for training and testing has been partitioned for these experiments. They mention, that some authors had to be pruned from the datasets, because their histories were too short for model training, but other than that, no further information is provided. As a result, HybridBERT4Recs generalization performance also remains unknown, along with questions like: Does it suffer from the cold start problem? How does it handle new and unseen items / users? How does it handle domain transfer after training? Does it inherit the fine-tuning capabilities transformers are well known for \cite{radfordImprovingLanguageUnderstanding}? Without these questions answered the real world applicability of this model is unknown, as it is unclear how it would handle such a dynamic and fast-paced environment.
 
     \section{Applying HybridBERT4Rec in an E-Learning Environment}
+    In this section, HybridBERT4Rec is going to be transferred into an E-Learning Environment. First, a trivial solution resolving around Video-content based E-Learning platforms such as Linked-In Learning \cite{LinkedInLearningMit} is presented. After that, a more involved setting, which reflects the use on an E-Learning platform like ILIAS \cite{Ilias}, is defined, followed by a discussion about how HybridBERT4Rec could be adapted and evaluated.
 
         \subsection{The Trivial Solution}
         \begin{figure}[ht!]
             \centering
-			\includegraphics[width=0.3\textwidth]{images/linked_in_landing.pdf}
-            \includegraphics[width=0.3\textwidth]{images/linked_in_course.pdf}
+			\includegraphics[width=0.4\textwidth]{images/linked_in_landing.pdf}
+            \includegraphics[width=0.4\textwidth]{images/linked_in_course.pdf}
 			\caption{Linked-In Learning landing-page and course overview \cite{LinkedInLearningMit}.}
             \label{fig:trivSol}
 		\end{figure}
+        As HybridBERT4Rec was originally developed and tested on the MovieLens1M \cite{MovieLens1MDataset2015} dataset, applying it in a video based setting which logs user watch histories and rating is trivial. An example for such an environment is Linked-In Learning \cite{LinkedInLearningMit}. As shown in Figure \ref{fig:trivSol}, Linked-In Learning offers video based learning courses, which can be \enquote{liked}, it also logs a history including which courses have been started and completed. In this setting, the history logged by the platform can be used directly to form the inputs for the CBF-BERT4Rec part of HybridBERT4Rec, similarly as with the original movie data. For the CF-Part, the \enquote{like} of a course can be seen as rating information. With that, every user who liked a course can be defined as a neighbor and be used in order to construct the user sequence for the CF-Part. As a result, the CF-Part can also be used directly, showing that HybridBERT4Rec can be applied to such a scenario without any necessary changes or adaptations, due to its similarity to movie recommendations.
     
         \subsection{The Setting}
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.6\textwidth]{images/setting.pdf}
-        \caption{The Setting, consisting of a user collection $U$ and their histories $h(u)$, a collection of learning objectives $T$ and a collection of exercises $X$, which can be used to predict a ranking $R(u)$ for a given user $u$.}
-        \label{fig:setting}
-    \end{figure}
+        \begin{figure}[ht!]
+            \centering
+            \includegraphics[width=0.6\textwidth]{images/setting.pdf}
+            \caption{The Setting, consisting of a user collection $U$ and their histories $h(u)$, a collection of learning objectives $T$ and a collection of exercises $X$, which can be used to predict a ranking $R(u)$ for a given user $u$.}
+            \label{fig:setting}
+        \end{figure}
+        
+        \FloatBarrier
+        \subsection{Model Adaption}
+        \begin{figure}[ht!]
+            \centering
+            \includegraphics[width=0.4\textwidth]{images/cbf.pdf}
+            \includegraphics[width=0.4\textwidth]{images/CF_use_case.pdf}
+            \caption{The adapted CBF-HybridBERT4Rec model on the left and the adapted CF-HybridBERT4Rec model on the right.}
+            \label{fig:modelAdapt}
+        \end{figure}
 
-    \subsection{Model Adaption}
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.4\textwidth]{images/cbf.pdf}
-        \includegraphics[width=0.4\textwidth]{images/CF_use_case.pdf}
-        \caption{The adapted CBF-HybridBERT4Rec model on the left and the adapted CF-HybridBERT4Rec model on the right.}
-        \label{fig:modelAdapt}
-    \end{figure}
+        \begin{equation}
+            H(u) := (\{(x_i, t_j, s_k)| (x_i, t_j) \in R_{t,x}\}, \leq)
+        \end{equation}
+        \begin{equation}
+            I(u) := (\{x_i|(x_i, t_j, s_k) \in H(u)\}, \leq)
+        \end{equation}
 
-    \begin{equation}
-        H(u) := (\{(x_i, t_j, s_k)| (x_i, t_j) \in R_{t,x}\}, \leq)
-    \end{equation}
-    \begin{equation}
-        I(u) := (\{x_i|(x_i, t_j, s_k) \in H(u)\}, \leq)
-    \end{equation}
+        \begin{equation}
+            u \in N \iff d_{u, t} = d_{u_m, t} \text{\,} \wedge (x, t) \in \{(x,t)|(x,t,s_k) \in H(u)\}
+        \end{equation}
 
-    \begin{equation}
-        u \in N \iff d_{u, t} = d_{u_m, t} \text{\,} \wedge (x, t) \in \{(x,t)|(x,t,s_k) \in H(u)\}
-    \end{equation}
-
-    \begin{algorithm}[ht!]
-        \caption{HybridBERT4Rec in an E-Learning Setting}
-        \begin{algorithmic}[1]
-            \ForAll{$u_m \in U$}
-                \State $r_{x,u_m} = \texttt{cbf\_hybridbert4rec}(H(u_m))$
-                \ForAll{$(x,t) \in R_{t,x}$}
-                    \State $r_{u, x} = \texttt{cf\_bert4rec}(u_m,t,x)$
-                    \State $\hat{r}_{u,x} = \texttt{prediction\_layer}(r_{x,u}, r_{u,x})$
+        \begin{algorithm}[ht!]
+            \caption{HybridBERT4Rec in an E-Learning Setting}
+            \begin{algorithmic}[1]
+                \ForAll{$u_m \in U$}
+                    \State $r_{x,u_m} = \texttt{cbf\_hybridbert4rec}(H(u_m))$
+                    \ForAll{$(x,t) \in R_{t,x}$}
+                        \State $r_{u, x} = \texttt{cf\_bert4rec}(u_m,t,x)$
+                        \State $\hat{r}_{u,x} = \texttt{prediction\_layer}(r_{x,u}, r_{u,x})$
+                    \EndFor
                 \EndFor
-            \EndFor
-        \end{algorithmic}
-    \end{algorithm}
+            \end{algorithmic}
+        \end{algorithm}
 
-    \FloatBarrier
-    \subsection{Solving Evaluation}
-    ABC
-    \subsection{Remaining Possible Issues}
-    ABC
+        \FloatBarrier
+        \subsection{Solving Evaluation}
+        ABC
+        \subsection{Remaining Possible Issues}
+        ABC
     \section{Conclusion}
     ABC
 %TC:ignore
